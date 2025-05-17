@@ -3,29 +3,24 @@ use std::thread;
 use std::io;
 use std::sync::{mpsc, Arc, Mutex};  
 
-fn main() {
-    stopwatch();
-}
-
-// fn get_input() {
-//     println!("enter current for current time, stopwatch for stopwatch");
-// // match user in
-// }
-
-fn stopwatch() {  
-    struct SharedStates {
+struct SharedStates {
         current_time: u32,
         running: bool,
         exit_flag: bool
     }
 
-    enum Command {
-        Stop,
-        Start,
-        Restart,
-        Clear
-    }
+enum Command {
+    Stop,
+    Start,
+    Restart,
+    Clear
+}
 
+fn main() {
+    stopwatch();
+}
+
+fn stopwatch() {    
     let stopwatch_duration: u32 = loop {
         println!("enter the time you want to elapse");
         let mut input = String::new();
